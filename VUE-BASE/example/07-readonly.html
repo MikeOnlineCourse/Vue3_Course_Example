@@ -19,7 +19,7 @@
           const num = reactive({ idx: 0 });
 
           /*
-            readonly 就是讓你的 ref 或是 reactive 的資料只可以讀去不可以被修改
+            readonly 就是讓你的 ref 或是 reactive 的資料只可以讀取不可以被修改
             非常適合用在參數傳遞的時候避免不小心被修改資料
          */
           const copyNum = readonly(num);

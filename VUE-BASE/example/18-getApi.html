@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>非同步處理</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: slategray;
+      }
+      .box {
+        width: 500px;
+      }
+      .box > .btnbox {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .box > .btnbox > a {
+        padding: 10px 10px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .img {
+        border: 8px solid #42b983;
+      }
+      .load {
+        width: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="box" v-show="isLoad">
+        <div>
+          <img
+            class="img"
+            v-for="(item, s) in photo.arr"
+            v-show="idx === s"
+            :key="item.url"
+            :src="item.url"
+            alt=""
+          />
+        </div>
+        <div class="btnbox">
+          <a @click="removeImg" href="javascript:;">上一張</a>
+          <a @click="addImg" href="javascript:;">下一張</a>
+        </div>
+      </div>
+      <img v-show="!isLoad" class="load" src="./images/load.gif" alt="" />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive, onMounted, watch } = Vue;
+      const app = {
+        setup() {
+          const photo = reactive({ arr: [] });
+          const idx = ref(0);
+          const isLoad = ref(false);
+
+          const addImg = () => {
+            idx.value++;
+            if (idx.value > photo.arr.length - 1) {
+              idx.value = 0;
+            }
+          };
+          const removeImg = () => {
+            idx.value--;
+            if (idx.value < 0) {
+              idx.value = photo.arr.length - 1;
+            }
+          };
+
+          const handImgLoad = (imgArr) => {
+            let i = 0;
+            imgArr.forEach((image) => {
+              const imgs = new Image();
+              imgs.src = image.url;
+              imgs.onload = () => {
+                i++;
+                isLoad.value = i === photo.arr.length;
+                photo.arr = imgArr;
+              };
+            });
+          };
+
+          onMounted(() => {
+            axios
+              .get("https://vue-lessons-api.herokuapp.com/photo/list")
+              .then((res) => {
+                handImgLoad(res.data);
+              });
+          });
+
+          return {
+            photo,
+            isLoad,
+            idx,
+            addImg,
+            removeImg,
+          };
+        },
+      };
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

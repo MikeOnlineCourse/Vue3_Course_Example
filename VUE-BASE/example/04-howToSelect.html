@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>howToSelect</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{refMessage}}</h1>
+      <h1>{{message.Text}}</h1>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive } = Vue;
+      const App = {
+        setup() {
+          // ref 可以接受任何型別的資料，但是不會對物件或是陣列內部的屬性變動做監聽
+          const refMessage = ref("ref -> Hello Vue!");
+
+          // reactive只能接受陣列或是物件，可以做深度的監聽，訪問資料的時候不需要 .value
+          const reactiveMessage = reactive({ Text: "reactive -> Hello Vue!" });
+
+          return {
+            refMessage,
+            reactiveMessage,
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

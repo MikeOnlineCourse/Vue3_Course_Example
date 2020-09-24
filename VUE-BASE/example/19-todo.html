@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
+    <link rel="stylesheet" href="./css/19-todo.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="wait">
+        <ul>
+          <li
+            v-for="(item, i) in puzzleWait.content"
+            :key="item.idx"
+            @click="handPuzzleActive(item, i)"
+          >
+            <img :src="item.url" alt="" />
+          </li>
+        </ul>
+      </div>
+      <div class="carried">
+        <ul>
+          <li
+            v-for="(item, i) in puzzleCarried.content"
+            :key="item.idx"
+            @click="handPuzzleReSet(item, i)"
+          >
+            <img :src="item.url" alt="" />
+          </li>
+        </ul>
+      </div>
+      <div :class="['winPage', {open: isWin}]">
+        <h1>闖關成功</h1>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive, onMounted, watch } = Vue;
+      const app = {
+        setup() {
+          const Winidx = ref(0);
+          const isWin = ref(false);
+          const puzzleWait = reactive({ content: [] });
+          const puzzleCarried = reactive({ content: [] });
+
+          watch(
+            () => puzzleCarried.content,
+            (imgItem) => {
+              Winidx.value = 0;
+              imgItem.forEach((el, idx) => {
+                if (el.idx === idx) {
+                  Winidx.value++;
+                }
+              });
+            },
+            { deep: true }
+          );
+
+          watch(Winidx, (i) => {
+            if (i === 9) {
+              setTimeout(() => {
+                isWin.value = true;
+              }, 500);
+            }
+          });
+
+          const handPuzzleActive = (item, i) => {
+            puzzleCarried.content.push(item);
+            puzzleWait.content.splice(i, 1);
+          };
+
+          const handPuzzleReSet = (item, i) => {
+            puzzleWait.content.push(item);
+            puzzleCarried.content.splice(i, 1);
+            Winidx.value--;
+            if (Winidx.value <= 0) {
+              Winidx.value = 0;
+            }
+          };
+
+          onMounted(() => {
+            axios.get("./api/puzzle.json").then((res) => {
+              puzzleWait.content = res.data;
+            });
+          });
+
+          return {
+            puzzleWait,
+            puzzleCarried,
+            handPuzzleActive,
+            handPuzzleReSet,
+            isWin,
+          };
+        },
+      };
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

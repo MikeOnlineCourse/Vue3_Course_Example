@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>twoWayBind</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{refMessage}}</h1>
+      <input type="text" v-model="refMessage" />
+      <br />
+      <br />
+      <br />
+      <h1>{{reactiveMsg.text}}</h1>
+      <input type="text" v-model="reactiveMsg.text" />
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive } = Vue;
+      const App = {
+        setup() {
+          const refMessage = ref("Hello Vue!");
+          const reactiveMsg = reactive({ text: "Hello Vue!" });
+          return {
+            refMessage,
+            reactiveMsg,
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

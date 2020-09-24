@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computed</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: slategray;
+      }
+      #app {
+        width: 400px;
+        overflow: hidden;
+        border: 1px solid #42b983;
+        border-radius: 10px;
+      }
+      .title {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        background-color: #42b983;
+        font-weight: bold;
+        color: darkslategray;
+        font-size: 20px;
+        border-bottom: 1px solid #d2d2d2;
+      }
+      .box {
+        display: block;
+        width: 100%;
+        height: 0;
+        background-color: snow;
+        transition: height 0.4s;
+      }
+      .box > li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        border-bottom: 1px solid #d2d2d2;
+        font-size: 12px;
+        color: darkslategray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <a @click="HandListShow" class="title">課程列表</a>
+      <ul class="box" :style="{height: BoxHeight}">
+        <li v-for="(list, idx) in listArr" :key="list">
+          {{idx + 1}}. {{list.name}} => ${{list.money}}
+        </li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive, computed } = Vue;
+      const App = {
+        setup() {
+          const isOpen = ref(true);
+          const listArr = reactive([
+            { name: "2020 Vue3 專業職人 | 入門篇", money: 3200 },
+            { name: "2020 Vue3 專業職人 | 加值篇", money: 100 },
+            { name: "2020 Vue3 專業職人 | 進階篇", money: 500 },
+            { name: "現代 JavaScript 職人之路｜入門篇", money: 300 },
+            { name: "現代 JavaScript 職人之路｜中階實戰篇", money: 1600 },
+            { name: "職人必修的RWD 網頁入門班", money: 900 },
+            { name: "HTML5+Animate CC 網頁動畫與遊戲互動", money: 2000 },
+            { name: "現代 JavaScript 職人之路｜面試篇", money: 1800 },
+          ]);
+
+          const BoxHeight = computed(() => {
+            return isOpen.value ? `${listArr.length * 40}px` : "0px";
+          });
+
+          const HandListShow = () => {
+            isOpen.value = !isOpen.value;
+          };
+
+          return {
+            isOpen,
+            listArr,
+            HandListShow,
+            BoxHeight,
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

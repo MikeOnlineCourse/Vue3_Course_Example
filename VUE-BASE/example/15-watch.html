@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watch</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref, reactive, watch } = Vue;
+      const App = {
+        setup() {
+          const num = ref(0);
+          const numData = reactive({ idx: 0 });
+          let timer = null;
+
+          watch(num, (num, prevNum) => {
+            console.log({ num });
+          });
+
+          watch(
+            () => numData.idx,
+            (idx, prevIdx) => {
+              console.log({ idx });
+            }
+          );
+
+          timer = setInterval(() => {
+            num.value++;
+            numData.idx++;
+            if (num.value > 4) {
+              clearInterval(timer);
+            }
+          }, 1000);
+
+          return {};
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

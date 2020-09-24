@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>modifiers 修飾符</title>
+    <link rel="stylesheet" href="./css/21-modifiers.css" />
+  </head>
+  <body>
+    <div id="app">
+      <a class="card" href="#" @click.prevent="gotoCourseListPage">
+        <div class="img-box">
+          <img src="./images/courses.jpg" alt="" />
+          <p class="info" @click.prevent.stop="gotoInfoPage">課程資訊</p>
+        </div>
+        <div class="text-box">
+          <p>2020 Vue3 專業職人 | 入門篇 (預購中)</p>
+        </div>
+      </a>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const app = {
+        setup() {
+          const gotoInfoPage = () => {
+            window.open("https://hiskio.com/courses/286/about");
+          };
+          const gotoCourseListPage = () => {
+            window.open("https://hiskio.com/courses/286/lectures");
+          };
+          return {
+            gotoInfoPage,
+            gotoCourseListPage,
+          };
+        },
+      };
+
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-if and v-show</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 id="vue-if">{{Text}}</h1>
+      <h1 id="vue-show">{{Text}}</h1>
+      <button @click="handDomShow">Hand Dom Show</button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref } = Vue;
+      const App = {
+        setup() {
+          const isShow = ref(false);
+          const Text = ref("Hello Vue!");
+
+          const handDomShow = () => {
+            isShow.value = !isShow.value;
+          };
+
+          return {
+            Text,
+            isShow,
+            handDomShow,
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

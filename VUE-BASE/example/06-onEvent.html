@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-on:Event</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{idx}}</h1>
+      <button v-on:click="addFn">Add</button>
+      <button v-on:click="removeFn">Remove</button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { ref } = Vue;
+      const App = {
+        setup() {
+          const idx = ref(0);
+          const addFn = () => {
+            idx.value++;
+          };
+          const removeFn = () => {
+            idx.value--;
+          };
+          return {
+            idx,
+            addFn,
+            removeFn,
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

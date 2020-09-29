@@ -61,7 +61,7 @@
     <div id="app">
       <a @click="HandListShow" class="title">課程列表</a>
       <ul class="box">
-        <li v-for="(list, idx) in listArr" :key="list"></li>
+        <li v-for="(list, idx) in listArr" :key="list">{{list.name}}</li>
       </ul>
     </div>
     <script src="./js/vue.js"></script>

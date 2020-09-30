@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ref & reactive & watch</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{refObj}}</h1>
+      <h1>{{reactiveObj}}</h1>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+      const { ref, reactive, watch } = Vue;
+      const App = {
+        setup() {
+          const refObj = ref({ idx: 0 });
+          const reactiveObj = reactive({ idx: 0 });
+
+          return { refObj, reactiveObj };
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

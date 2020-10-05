@@ -7,8 +7,8 @@
   </head>
   <body>
     <div id="app">
-      <h1>{{refObj}}</h1>
-      <h1>{{reactiveObj}}</h1>
+      <h1>{{refArr}}</h1>
+      <h1>{{reactiveArr}}</h1>
     </div>
 
     <script src="./js/vue.js"></script>
@@ -16,26 +16,23 @@
       const { ref, reactive, watch } = Vue;
       const App = {
         setup() {
-          const refObj = ref({ idx: 0 });
-          const reactiveObj = reactive({ idx: 0 });
+          const refArr = ref([]);
+          const reactiveArr = reactive([]);
 
-          watch(
-            () => refObj.value,
-            (newVal) => {
-              console.log("ref:", newVal);
-            }
-          );
+          watch(refArr, (newObj, oldObj) => {
+            console.log("ref:", { newObj, oldObj });
+          });
 
-          watch(reactiveObj, (newVal) => {
-            console.log("reactive:", newVal);
+          watch(reactiveArr, (newObj, oldObj) => {
+            console.log("reactive:", { newObj, oldObj });
           });
 
           setTimeout(() => {
-            refObj.value.idx = 1;
-            reactiveObj.idx = 1;
+            refArr.value.push("mike");
+            reactiveArr.push("mike");
           }, 1000);
 
-          return { refObj, reactiveObj };
+          return { refArr, reactiveArr };
         },
       };
 

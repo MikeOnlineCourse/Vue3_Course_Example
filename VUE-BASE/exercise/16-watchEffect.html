@@ -15,14 +15,10 @@
         setup() {
           const num = ref(0);
           const numData = reactive({ idx: 0 });
-          let timer = null;
 
-          timer = setInterval(() => {
+          setTimeout(() => {
             num.value++;
             numData.idx++;
-            if (num.value > 4) {
-              clearInterval(timer);
-            }
           }, 1000);
 
           return {};

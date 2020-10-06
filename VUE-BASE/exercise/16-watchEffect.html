@@ -10,16 +10,12 @@
 
     <script src="./js/vue.js"></script>
     <script>
-      const { ref, reactive, watchEffect } = Vue;
+      const { ref, reactive } = Vue;
       const App = {
         setup() {
           const num = ref(0);
           const numData = reactive({ idx: 0 });
           let timer = null;
-
-          watchEffect(() => {
-            console.log(num.value);
-          });
 
           timer = setInterval(() => {
             num.value++;

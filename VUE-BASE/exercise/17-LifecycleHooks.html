@@ -12,21 +12,8 @@
 
     <script src="./js/vue.js"></script>
     <script>
-      const { onBeforeMount, onMounted, onUpdated } = Vue;
       const App = {
         setup() {
-          onBeforeMount(() => {
-            // DOM 渲染前
-            console.log("DOM 渲染前");
-          });
-          onMounted(() => {
-            // DOM 渲染完成後
-            console.log("DOM 渲染完成後");
-          });
-          onUpdated(() => {
-            // 在資料更改導致virtual DOM重新渲染後調用
-            console.log("資料更改後");
-          });
           return {
             idx,
           };

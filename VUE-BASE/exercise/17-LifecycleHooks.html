@@ -7,14 +7,35 @@
   </head>
   <body>
     <div id="app">
-      <h1></h1>
+      <h1>{{idx}}</h1>
     </div>
 
     <script src="./js/vue.js"></script>
     <script>
+      const { ref, onBeforeMount, onMounted, onUpdated } = Vue;
       const App = {
         setup() {
-          return {};
+          const idx = ref(0);
+          setTimeout(() => {
+            idx.value = 1;
+            console.log(idx.value);
+          }, 3000);
+          onBeforeMount(() => {
+            // DOM 渲染前
+            console.log("DOM 渲染前");
+          });
+          onMounted(() => {
+            // DOM 渲染完成後
+            console.log("DOM 渲染完成後");
+          });
+          onUpdated(() => {
+            // 在資料更改導致virtual DOM重新渲染後調用
+            console.log("資料更改後");
+          });
+
+          return {
+            idx,
+          };
         },
       };
 

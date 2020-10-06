@@ -15,6 +15,10 @@
         setup() {
           const data = ref({ user: {} });
 
+          watch(data, (newVal) => {
+            console.log(newVal);
+          });
+
           setTimeout(() => {}, 1000);
 
           return {};

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>From Bindings</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/01-FromBindings.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="input-box">
+        <p>E-MAIL</p>
+        <input type="text" placeholder="輸入email" />
+      </div>
+      <div class="input-box">
+        <p>PASSWORD</p>
+        <input type="text" placeholder="輸入密碼" />
+      </div>
+      <div class="input-box">
+        <input type="checkbox" id="checkbox" />
+        <label for="checkbox">我已閱讀使用者條款</label>
+      </div>
+      <a class="btn">送出</a>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      const App = {
+        setup() {
+          return {};
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

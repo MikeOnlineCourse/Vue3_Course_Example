@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>registered</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/04-registered.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <div class="input-box">
+          <p>NAME</p>
+          <input type="text" placeholder="輸入使用者名稱" />
+          <p class="error"></p>
+        </div>
+        <div class="input-box">
+          <p>PASSWORD</p>
+          <input type="password" placeholder="輸入密碼" />
+          <p class="error"></p>
+        </div>
+        <div class="input-box">
+          <p>E-MAIL</p>
+          <input type="text" placeholder="輸入email" />
+          <p class="error"></p>
+        </div>
+        <div class="input-box">
+          <p>年齡</p>
+          <input type="number" placeholder="輸入年齡" />
+        </div>
+        <div class="input-box">
+          <input type="radio" id="boy" value="boy" />
+          <label for="boy">boy</label>
+          <input type="radio" id="girl" value="girl" />
+          <label for="girl">girl</label>
+        </div>
+        <div class="input-box">
+          <input type="checkbox" id="checkbox" />
+          <label for="checkbox">我已閱讀使用者條款</label>
+        </div>
+        <a class="btn">送出</a>
+      </div>
+      <div>
+        <h1>註冊成功</h1>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <!-- 
+      {
+        username: 'mike',
+        password: '123456789',
+        sex: 'boy',
+        email: 'qwer@gmail.com',
+        age: '12'
+        terms: false,
+      }
+     -->
+    <script>
+      const app = {
+        setup() {
+          return {};
+        },
+      };
+
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+p,
+label,
+span {
+  color: white;
+  margin-bottom: 3px;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/03-Select.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="select-box">
+        <select>
+          <option disabled value="">請選擇縣市</option>
+        </select>
+        <select>
+          <option disabled value="">請選擇區域</option>
+        </select>
+      </div>
+      <a class="btn">送出</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <script>
+      const App = {
+        setup() {
+          return {};
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

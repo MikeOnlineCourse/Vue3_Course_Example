@@ -1,0 +1,11 @@
+.select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+select {
+  display: block;
+  width: 200px;
+  height: 30px;
+  margin: 0 3px;
+}

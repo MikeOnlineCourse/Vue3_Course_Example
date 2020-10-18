@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/03-Select.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="select-box">
+        <select v-model="city">
+          <option disabled value="">請選擇縣市</option>
+          <option v-for="item in twZip.city" :key="item.name">
+            {{item.name}}
+          </option>
+        </select>
+        <select v-model="area">
+          <option disabled value="">請選擇區域</option>
+          <option v-for="item in twZip.area" :key="item.name" :value="item.zip">
+            {{item.name}}
+          </option>
+        </select>
+      </div>
+      <a class="btn" @click="handSelect">送出</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <script>
+      const { ref, reactive, watch, onMounted } = Vue;
+      const App = {
+        setup() {
+          const twZip = reactive({ city: [], area: [] });
+          const city = ref("");
+          const area = ref("");
+
+          watch(city, (newVal) => {
+            const areaFilter = twZip.city.filter(
+              (list) => list.name === newVal
+            );
+            area.value = "";
+            twZip.area = areaFilter[0].area;
+          });
+
+          onMounted(() => {
+            axios.get("/city/list").then((res) => {
+              twZip["city"] = res.data.twzip.city;
+              console.log(twZip.city);
+            });
+          });
+
+          const handSelect = () => {
+            console.log({ city: city.value, area: area.value });
+          };
+
+          return { city, area, twZip, handSelect };
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

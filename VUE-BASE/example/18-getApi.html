@@ -98,11 +98,9 @@
           };
 
           onMounted(() => {
-            axios
-              .get("https://vue-lessons-api.herokuapp.com/photo/list")
-              .then((res) => {
-                handImgLoad(res.data);
-              });
+            axios.get("/photo/list").then((res) => {
+              handImgLoad(res.data);
+            });
           });
 
           return {

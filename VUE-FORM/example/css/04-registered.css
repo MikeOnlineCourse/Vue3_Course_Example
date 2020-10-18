@@ -1,0 +1,32 @@
+p,
+label {
+  color: white;
+  margin-bottom: 3px;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+  width: 180px;
+  height: 24px;
+  padding-left: 5px;
+}
+.input-box {
+  margin-bottom: 20px;
+}
+
+input[type="radio"] {
+  margin: 0 7px;
+}
+label {
+  margin-right: 15px;
+}
+
+p.error {
+  color: rgb(255, 119, 119);
+  font-size: 12px;
+  padding-top: 4px;
+}
+
+h1 {
+  color: aliceblue;
+}

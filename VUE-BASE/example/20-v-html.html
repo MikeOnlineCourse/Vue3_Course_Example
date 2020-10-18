@@ -29,11 +29,9 @@
           const dom = ref("");
 
           onMounted(() => {
-            axios
-              .get("https://vue-lessons-api.herokuapp.com/dom/content")
-              .then((res) => {
-                dom.value = res.data.html;
-              });
+            axios.get("/dom/content").then((res) => {
+              dom.value = res.data.html;
+            });
           });
 
           return {

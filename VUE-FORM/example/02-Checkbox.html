@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkbox</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/02-Checkbox.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <ul>
+          <li v-for="item in courseslist.tags" :key="item.tag">
+            <input
+              type="checkbox"
+              :id="item.tag"
+              :value="item.tag"
+              v-model="courseslist.checkItem"
+            />
+            <label :for="item.tag">{{item.tag}}</label>
+          </li>
+        </ul>
+        <a class="btn" @click="handSelectCheck">送出</a>
+      </div>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      const { reactive } = Vue;
+      const App = {
+        setup() {
+          const courseslist = reactive({
+            checkItem: [],
+            tags: [
+              { tag: "JavaScript" },
+              { tag: "Html" },
+              { tag: "Css" },
+              { tag: "Html5" },
+              { tag: "Vuejs" },
+              { tag: "React" },
+              { tag: "Sass" },
+              { tag: "Css3" },
+              { tag: "Canvas" },
+            ],
+          });
+          const handSelectCheck = () => {
+            console.log(courseslist.checkItem);
+          };
+          return { courseslist, handSelectCheck };
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>From Bindings</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/01-FromBindings.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="input-box">
+        <p>E-MAIL</p>
+        <input type="text" placeholder="輸入email" v-model="email" />
+      </div>
+      <div class="input-box">
+        <p>PASSWORD</p>
+        <input type="text" placeholder="輸入密碼" v-model="password" />
+      </div>
+      <div class="input-box">
+        <input type="checkbox" id="checkbox" v-model="terms" />
+        <label for="checkbox">我已閱讀使用者條款</label>
+      </div>
+      <a class="btn" @click="handLoginFn">送出</a>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      const { ref } = Vue;
+      const App = {
+        setup() {
+          const email = ref("");
+          const password = ref("");
+          const terms = ref(false);
+
+          const handLoginFn = () => {
+            const data = {
+              email: email.value,
+              password: password.value,
+              terms: terms.value,
+            };
+            console.log(data);
+          };
+
+          return {
+            email,
+            password,
+            terms,
+            handLoginFn,
+          };
+        },
+      };
+
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

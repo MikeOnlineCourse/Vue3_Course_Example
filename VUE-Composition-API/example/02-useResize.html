@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>useResize</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/02-resize.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>width:{{width}}, height:{{height}}</h1>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script type="module">
+      import { useReSize } from "./composition-api/useReSize.js";
+      const App = {
+        setup() {
+          const { width, height } = useReSize();
+          return { width, height };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

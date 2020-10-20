@@ -12,31 +12,47 @@
       <div>
         <div class="input-box">
           <p>NAME</p>
-          <input type="text" placeholder="輸入使用者名稱" />
+          <input
+            type="text"
+            placeholder="輸入使用者名稱"
+            v-model="registered.username"
+          />
           <p class="error"></p>
         </div>
         <div class="input-box">
           <p>PASSWORD</p>
-          <input type="password" placeholder="輸入密碼" />
+          <input
+            type="password"
+            placeholder="輸入密碼"
+            v-model="registered.password"
+          />
           <p class="error"></p>
         </div>
         <div class="input-box">
           <p>E-MAIL</p>
-          <input type="text" placeholder="輸入email" />
+          <input
+            type="text"
+            placeholder="輸入email"
+            v-model="registered.email"
+          />
           <p class="error"></p>
         </div>
         <div class="input-box">
           <p>年齡</p>
-          <input type="number" placeholder="輸入年齡" />
+          <input
+            type="number"
+            placeholder="輸入年齡"
+            v-model="registered.age"
+          />
         </div>
         <div class="input-box">
-          <input type="radio" id="boy" value="boy" />
+          <input type="radio" id="boy" value="boy" v-model="registered.sex" />
           <label for="boy">boy</label>
-          <input type="radio" id="girl" value="girl" />
+          <input type="radio" id="girl" value="girl" v-model="registered.sex" />
           <label for="girl">girl</label>
         </div>
         <div class="input-box">
-          <input type="checkbox" id="checkbox" />
+          <input type="checkbox" id="checkbox" v-model="registered.terms" />
           <label for="checkbox">我已閱讀使用者條款</label>
         </div>
         <a class="btn">送出</a>
@@ -69,7 +85,8 @@
             age: "",
             terms: false,
           });
-          return {};
+
+          return { registered };
         },
       };
 

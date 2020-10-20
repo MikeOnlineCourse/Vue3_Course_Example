@@ -58,8 +58,17 @@
       }
      -->
     <script>
+      const { reactive } = Vue;
       const app = {
         setup() {
+          const registered = reactive({
+            username: "",
+            password: "",
+            sex: "",
+            email: "",
+            age: "",
+            terms: false,
+          });
           return {};
         },
       };

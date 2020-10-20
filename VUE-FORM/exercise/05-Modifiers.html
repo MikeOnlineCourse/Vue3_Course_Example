@@ -22,7 +22,7 @@
   <body>
     <div id="app">
       <div class="input-box">
-        <input type="text" placeholder="lazy" v-model="lazyVal" />
+        <input type="text" placeholder="lazy" v-model.laz="lazyVal" />
         <p>{{lazyVal}}</p>
       </div>
       <div class="input-box">
@@ -44,13 +44,13 @@
           const trimVal = ref("");
 
           watch(lazyVal, (newVal) => {
-            console.log("lazy=>", newVal);
+            console.log(`lazy=>${newVal}`);
           });
           watch(numberVal, (newVal) => {
-            console.log("number=>", newVal);
+            console.log(`number=>${newVal}`);
           });
           watch(trimVal, (newVal) => {
-            console.log("trim=>", newVal);
+            console.log(`trim=>${newVal}`);
           });
 
           return { lazyVal, numberVal, trimVal };

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>RWD Web</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="app">
+      <header :class="{openMenu: isOpen}">
+        <nav>
+          <h1>Hahow</h1>
+          <a id="moblie_menu" @click="handMenuOpen" href="javascript:;"></a>
+          <div>
+            <a href="javascript:;">RWD</a>
+            <a href="javascript:;">VUEJS</a>
+            <a href="javascript:;">REACTJS</a>
+            <a href="javascript:;">HTML5</a>
+            <a href="javascript:;">NODEJS</a>
+          </div>
+        </nav>
+      </header>
+      <article>
+        <div>
+          <h3>Responsive Web Design</h3>
+          <p>
+            選用對的html5標籤除了在閱讀 html
+            原始碼更加順暢外，也有助於google搜尋引擎排名順序，SEO效果的提升
+          </p>
+        </div>
+      </article>
+      <aside>
+        <div class="mid">
+          <div class="text_content">
+            <h3>遇到平版電腦時會自動轉換成適合平版電腦大小的版型</h3>
+          </div>
+          <a href="javscript:;"></a>
+        </div>
+      </aside>
+      <main>
+        <div class="mid">
+          <div class="box1"></div>
+          <div class="box2"></div>
+          <div class="box3"></div>
+        </div>
+      </main>
+      <footer>
+        <div>
+          <div class="left_box">
+            <h4>Mike Cheng</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              vehicula ipsum non leo tristique eget facilisis lacus commodo.
+              Curabitur vitae justo lorem, non ornare nibh. Pellentesque
+              pretium, tellus ac ultrices faucibus, nibh mauris dapibus lorem,
+              vitae viverra nisl elit sit amet libero. Nam eu blandit risus.
+            </p>
+            <p>
+              Phasellus imperdiet mattis nulla. Integer gravida imperdiet
+              congue. Proin vitae pretium augue. Donec est sem, mattis et
+              blandit ac, blandit at arcu. Donec tempus tincidunt suscipit.
+              Suspendisse eu vulputate lacus.
+            </p>
+          </div>
+          <div class="right_box">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+              vehicula ipsum non leo tristique eget facilisis lacus commodo.
+              Curabitur vitae justo lorem, non ornare nibh. Pellentesque
+              pretium, tellus ac ultrices faucibus, nibh mauris dapibus lorem,
+              vitae viverra nisl elit sit amet libero. Nam eu blandit risus.
+            </p>
+            <p>
+              Phasellus imperdiet mattis nulla. Integer gravida imperdiet
+              congue. Proin vitae pretium augue. Donec est sem, mattis et
+              blandit ac, blandit at arcu. Donec tempus tincidunt suscipit.
+              Suspendisse eu vulputate lacus.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      const { ref } = Vue;
+      const app = {
+        setup() {
+          const isOpen = ref(false);
+          const handMenuOpen = () => {
+            isOpen.value = !isOpen.value;
+          };
+
+          return { isOpen, handMenuOpen };
+        },
+      };
+
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>

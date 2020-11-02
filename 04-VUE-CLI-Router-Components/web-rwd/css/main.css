@@ -1,0 +1,332 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+}
+img {
+  display: block;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+/*--------------------------------------------------------------*/
+header {
+  background-color: #373c3f;
+  width: 100%;
+  height: 97px;
+}
+header > nav {
+  position: relative;
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+}
+header > nav > h1 {
+  line-height: 97px;
+  font-size: 18px;
+  float: left;
+  color: #fff;
+  margin-right: 20px;
+}
+header > nav > div {
+  width: 100%;
+  height: 100%;
+}
+header > nav > div > a {
+  display: block;
+  line-height: 97px;
+  font-size: 15px;
+  float: left;
+  color: #fff;
+  padding: 0 10px;
+}
+a#moblie_menu {
+  display: none;
+}
+/*--------------------------------------------------------------*/
+article {
+  width: 100%;
+  height: 578px;
+  background-image: url("../images/banner.png");
+  background-size: cover;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+article > div > h3 {
+  text-align: center;
+  font-size: 48px;
+  color: #fff;
+}
+article > div > p {
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  line-height: 3em;
+}
+/*--------------------------------------------------------------*/
+aside {
+  width: 100%;
+  height: 245px;
+  background-color: #27212c;
+}
+aside > .mid {
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+}
+aside > .mid > .text_content {
+  width: 77%;
+  height: 100%;
+  float: left;
+}
+aside > .mid > .text_content > h3 {
+  line-height: 245px;
+  color: #9484a2;
+  letter-spacing: 2px;
+  font-weight: 400;
+  font-size: 20px;
+}
+aside > .mid > a {
+  display: block;
+  width: 23%;
+  height: 100%;
+  float: right;
+  background-color: #bc3183;
+  background-image: url("../images/rightbtn.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+/*--------------------------------------------------------------*/
+main {
+  width: 100%;
+  height: 294px;
+  background-color: #5b0fa1;
+}
+main > .mid {
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #5b0fa1;
+}
+
+main > .mid > div {
+  width: 33.3333%;
+  height: 100%;
+  float: left;
+}
+.box1 {
+  cursor: pointer;
+  background-image: url("../images/rightbtn2.jpg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.box2 {
+  background-image: url("../images/r1.jpg");
+  background-size: cover;
+}
+.box3 {
+  background-image: url("../images/r2.jpg");
+  background-size: cover;
+}
+/*--------------------------------------------------------------*/
+footer {
+  width: 100%;
+  height: 562px;
+  background-color: #ebebeb;
+}
+footer > div {
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+}
+.left_box {
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding-top: 3%;
+}
+.right_box {
+  width: 50%;
+  height: 100%;
+  float: right;
+  padding-top: 15.5%;
+}
+
+.left_box > h4 {
+  color: #088ca5;
+  font-size: 30px;
+  padding: 15% 11% 3% 11%;
+}
+
+.left_box > p,
+.right_box > p {
+  color: #515151;
+  font-size: 14px;
+  padding: 20px 11%;
+  text-align: justify;
+}
+@media screen and (max-width: 1044px) {
+  header > nav {
+    width: 100%;
+  }
+  header > nav > h1 {
+    margin-left: 5%;
+  }
+  /*--------------------------------------------------------------*/
+  article > div {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+  }
+  article > div > h3 {
+    font-size: 30px;
+  }
+  article > div > p {
+    font-size: 14px;
+    line-height: 25px;
+  }
+  /*--------------------------------------------------------------*/
+  aside > .mid {
+    width: 100%;
+  }
+  aside > .mid > .text_content {
+    width: 77%;
+  }
+  aside > .mid > .text_content > h3 {
+    font-size: 18px;
+    padding-left: 3%;
+  }
+  aside > .mid > a {
+    width: 20%;
+  }
+  /*--------------------------------------------------------------*/
+  main > .mid {
+    width: 100%;
+  }
+  .box2 {
+    background-position-x: 50%;
+  }
+  .box3 {
+    background-position-x: 50%;
+  }
+  /*--------------------------------------------------------------*/
+  footer > div {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  article {
+    height: 349px;
+  }
+}
+@media screen and (max-width: 640px) {
+  a#moblie_menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 37px;
+    height: 37px;
+    background-image: url("../images/menu.jpg");
+    background-position: 50% 50%;
+    background-size: 95% auto;
+    background-repeat: no-repeat;
+  }
+  header {
+    transition: height 0.2s;
+    height: 37px;
+    overflow: hidden;
+  }
+  header.openMenu {
+    height: 232px;
+  }
+  header > nav {
+    width: 100%;
+    height: 232px;
+  }
+  header > nav > h1 {
+    line-height: 37px;
+  }
+  header > nav > div {
+    clear: both;
+    width: 100%;
+    height: 195px;
+  }
+  header > nav > div > a {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    line-height: 37px;
+    text-align: center;
+  }
+  article {
+    height: 175px;
+  }
+  aside {
+    width: 100%;
+    height: 75px;
+    background-color: #27212c;
+  }
+  aside > .mid > .text_content {
+    width: 85%;
+  }
+  aside > .mid > .text_content > h3 {
+    width: 90%;
+    line-height: 75px;
+    letter-spacing: 0px;
+    font-size: 0.5em;
+    /*---------------------------------------------------------*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*---------------------------------------------------------*/
+  }
+  aside > .mid > a {
+    width: 15%;
+  }
+  main {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: #5b0fa1;
+  }
+  main > .mid {
+    width: 100%;
+    height: 294px;
+  }
+  main > .mid > div {
+    width: 100%;
+    height: 277px;
+    float: left;
+  }
+  footer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: #ebebeb;
+  }
+  .left_box {
+    width: 100%;
+    float: none;
+    padding-top: 0%;
+  }
+  .right_box {
+    width: 100%;
+    float: none;
+    padding-top: 0%;
+  }
+  .left_box > h4 {
+    color: #088ca5;
+    font-size: 30px;
+    padding: 15% 11% 3% 11%;
+  }
+}

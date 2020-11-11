@@ -5,7 +5,6 @@ export default {};
 <template>
   <h1>
     <img src="../assets/logo.png" alt="" />
-    <slot></slot>
   </h1>
 </template>
 

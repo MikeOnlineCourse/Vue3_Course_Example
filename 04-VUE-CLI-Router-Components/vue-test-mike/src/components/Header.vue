@@ -18,14 +18,15 @@ export default {
 <template>
   <header :class="{ openMenu: isOpen }">
     <nav>
-      <h1>Mike</h1>
+      <!-- <h1>Mike</h1> -->
+      <router-link class="Title" to="/">Mike</router-link>
       <a id="moblie_menu" @click="HandMenuOpen" href="javascript:;"></a>
       <div>
-        <a href="javascript:;">RWD</a>
-        <a href="javascript:;">VUEJS</a>
-        <a href="javascript:;">REACTJS</a>
-        <a href="javascript:;">HTML5</a>
-        <a href="javascript:;">NODEJS</a>
+        <router-link to="/rwd">RWD</router-link>
+        <router-link to="/vuejs">VUEJS</router-link>
+        <router-link to="/reactjs">REACTJS</router-link>
+        <router-link to="/html5">HTML5</router-link>
+        <router-link to="/nodejs">NODEJS</router-link>
       </div>
     </nav>
   </header>
@@ -59,7 +60,7 @@ header {
       width: 100%;
       height: 232px;
     }
-    > h1 {
+    > .Title {
       line-height: 97px;
       font-size: 18px;
       float: left;

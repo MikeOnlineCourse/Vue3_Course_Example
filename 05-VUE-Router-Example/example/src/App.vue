@@ -2,21 +2,17 @@
 import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 export default {
-  setup(props, context) {
+  setup() {
     const route = useRoute();
     const reuteArr = ["/", "/about", "/courses"];
     const idx = ref(0);
 
     const RouterChange = () => {
-      reuteArr.forEach((item, index) => {
-        if (location.pathname.indexOf(item) === 0) {
-          idx.value = index;
-        }
-      });
+      idx.value = reuteArr.indexOf(route.path);
     };
 
     watch(
-      () => route.params,
+      () => route.path,
       () => {
         RouterChange();
       }

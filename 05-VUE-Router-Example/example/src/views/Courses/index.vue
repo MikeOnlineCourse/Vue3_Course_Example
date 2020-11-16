@@ -11,6 +11,11 @@ export default {
       router.push(`/courses/${id}`);
     };
 
+    const openNewTab = (id) => {
+      const routeData = router.resolve({ path: `/courses/${id}` });
+      window.open(routeData.href, "_blank");
+    };
+
     onMounted(() => {
       axios
         .get("https://vue-lessons-api.herokuapp.com/courses/list")
@@ -19,7 +24,7 @@ export default {
         });
     });
 
-    return { courses, goToCourses };
+    return { courses, goToCourses, openNewTab };
   },
 };
 </script>
@@ -29,7 +34,8 @@ export default {
       class="card"
       v-for="item in courses.data"
       :key="item.id"
-      @click="goToCourses(item.id)"
+      @click.left="goToCourses(item.id)"
+      @click.middle="openNewTab(item.id)"
     >
       <img :src="item.photo" alt="" />
       <div class="content">

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import NotFoundComponent from "../views/NotFoundComponent.vue";
 // import Rwd from "../views/Rwd.vue";
 // import Vuejs from "../views/Vuejs.vue";
 // import Reactjs from "../views/Reactjs.vue";
@@ -37,6 +38,7 @@ const routes = [
     name: "nodejs",
     component: () => import("../views/Nodejs.vue"),
   },
+  { path: "/:pathMatch(.*)", component: NotFoundComponent },
   // {
   //   path: '/about',
   //   name: 'About',

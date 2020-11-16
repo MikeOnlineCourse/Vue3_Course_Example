@@ -4,11 +4,16 @@ import { useRoute } from "vue-router";
 export default {
   setup() {
     const route = useRoute();
-    const reuteArr = ["/", "/about", "/courses"];
+    const reuteArr = ["", "about", "courses"];
     const idx = ref(0);
 
     const RouterChange = () => {
-      idx.value = reuteArr.indexOf(route.path);
+      reuteArr.forEach((item, index) => {
+        const rp = route.path.substr(1).split("/")[0];
+        if (rp === item) {
+          idx.value = index;
+        }
+      });
     };
 
     watch(

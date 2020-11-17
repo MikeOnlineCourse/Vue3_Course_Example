@@ -7,25 +7,17 @@ export default {
     const reuteArr = ["", "about", "courses"];
     const idx = ref(0);
 
-    const RouterChange = () => {
-      reuteArr.forEach((item, index) => {
-        const rp = route.path.substr(1).split("/")[0];
-        if (rp === item) {
-          idx.value = index;
-        }
-      });
-    };
-
     watch(
       () => route.path,
       () => {
-        RouterChange();
+        reuteArr.forEach((item, index) => {
+          const rp = route.path.substr(1).split("/")[0];
+          if (rp === item) {
+            idx.value = index;
+          }
+        });
       }
     );
-
-    onMounted(() => {
-      RouterChange();
-    });
 
     return { idx };
   },
